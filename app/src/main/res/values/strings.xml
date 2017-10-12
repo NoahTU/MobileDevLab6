@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Lab3</string>
+    <color name="redd">#ff0000</color>
+    <string-array name="colors_array">
+        <item>red</item>
+        <item>blue</item>
+        <item>green</item>
+        <item>yellow</item>
+        <item>gray</item>
+        <item>black</item>
+        <item>light gray</item>
+        <item>white</item>
+        <item>magenta</item>
+        <item>cyan</item>
+    </string-array>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lab3</string>
+    <color name="redd">#ff0000</color>
+    <string-array name="colors_array">
+        <item>rojo</item>
+        <item>azul</item>
+        <item>verde</item>
+        <item>amarillo</item>
+        <item>gris</item>
+        <item>negro</item>
+        <item>gris claro</item>
+        <item>blanco</item>
+        <item>magenta</item>
+        <item>cian</item>
+    </string-array>
+</resources>
