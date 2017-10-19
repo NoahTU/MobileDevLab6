@@ -28,8 +28,12 @@ public class NavFragment extends Fragment {
     GridView gridview;
     View v;
 
-    public NavFragment() {
+    /*public NavFragment() {
         // Required empty public constructor
+    }*/
+
+    public static NavFragment newInstance() {
+        return new NavFragment();
     }
 
     @Override
@@ -39,10 +43,10 @@ public class NavFragment extends Fragment {
     }
 
 
-    @Override
+    /*@Override
     public void onDetach() {
         activty = null;
-    }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
