@@ -28,9 +28,15 @@ public class NavFragment extends Fragment {
     GridView gridview;
     View v;
 
-    /*public NavFragment() {
+    public NavFragment() {
         // Required empty public constructor
-    }*/
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
 
     public static NavFragment newInstance() {
         return new NavFragment();

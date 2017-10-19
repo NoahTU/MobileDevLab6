@@ -52,7 +52,7 @@ public class PaletteActivity extends AppCompatActivity implements NavFragment.Se
 
 
 
-        receiver = new DetailsFragment();
+        //receiver = new DetailsFragment();
         NavFragment sender = new NavFragment();
 
 
@@ -62,10 +62,10 @@ public class PaletteActivity extends AppCompatActivity implements NavFragment.Se
                 .add(R.id.fragment_nav, sender)
                 .commit();
 
-        getFragmentManager()
+        /*getFragmentManager()
                 .beginTransaction()
                 .add(R.id.fragment_details, receiver)
-                .commit();
+                .commit();*/
 
         //getWindow().getDecorView().setBackgroundColor(Color.RED);
         /*ArrayAdapter<String> adapter;
@@ -96,10 +96,16 @@ public class PaletteActivity extends AppCompatActivity implements NavFragment.Se
          *  and load fragment if true.
          */
         if (twoPanes){
+            receiver = new DetailsFragment();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.fragment_details, new DetailsFragment());
-            fragmentTransaction.add(R.id.fragment_nav, new NavFragment());
+            fragmentTransaction.add(R.id.fragment_details, receiver);
+           // fragmentTransaction.add(R.id.fragment_nav, new NavFragment());
             fragmentTransaction.commit();
+
+            getFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.fragment_details, receiver)
+                    .commit();
         }
 
         /*Resources res = this.getResources();
@@ -144,7 +150,30 @@ public class PaletteActivity extends AppCompatActivity implements NavFragment.Se
     @Override
     public void acceptMessage(String message) {
         System.out.println("BOI "+message);
-        receiver.setMessage(message);
+
+
+        if (!twoPanes) {
+            receiver = new DetailsFragment();
+
+            //receiver.setMessage(message);
+            getFragmentManager()
+                    .beginTransaction()
+                   // .add(R.id.fragment_details, receiver)
+                    .replace(R.id.fragment_nav, receiver)
+                    .addToBackStack(null)
+                    .commit();
+            getFragmentManager()
+                    .executePendingTransactions();
+
+            //receiver.setMessage(message);
+            System.out.println(message);
+            findViewById(R.id.dett).setBackgroundColor(Color.BLACK);
+        }
+        else{
+            receiver.setMessage(message);
+        }
+
+
     }
 
    /* @Override

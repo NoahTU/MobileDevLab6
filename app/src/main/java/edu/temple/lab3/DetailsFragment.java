@@ -21,20 +21,26 @@ public class DetailsFragment extends Fragment {
     TextView textView;
     //String p="";
 
-   /* public static DetailsFragment newInstance() {
+    public static DetailsFragment newInstance() {
         return new DetailsFragment();
-    }*/
+    }
 
     public DetailsFragment() {
         // Required empty public constructor
     }
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
         View RootView = inflater.inflate(R.layout.fragment_details, container, false);
+
         textView=  (TextView)RootView.findViewById(R.id.det);
 
 
@@ -62,7 +68,7 @@ public class DetailsFragment extends Fragment {
 
     }
 
-    public void setMessage(String message){
+    void setMessage(String message){
         String picked= message;
         //p=message;
         //TextView tv=  (TextView)getView().findViewById(R.id.det);
