@@ -3,6 +3,7 @@ package edu.temple.lab3;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -68,13 +69,25 @@ public class PaletteActivity extends AppCompatActivity implements NavFragment.Se
         //System.out.println(twoPanes);
 
         if (getResources().getConfiguration().orientation==1){
-            twoPanes=false;
+           twoPanes=false;
+        }
+
+        if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            Toast.makeText(this, "Large screen", Toast.LENGTH_LONG).show();
+            twoPanes=true;
+        }
+        else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
+            Toast.makeText(this, "Normal sized screen", Toast.LENGTH_LONG).show();
+        }
+        else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+            Toast.makeText(this, "Small sized screen", Toast.LENGTH_LONG).show();
         }
 
         //  Load navigation fragment by default
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragment_nav, new NavFragment());
+        //fragmentTransaction.add(R.id.fragment_details, new DetailsFragment());
         fragmentTransaction.commit();
 
 
@@ -114,11 +127,13 @@ public class PaletteActivity extends AppCompatActivity implements NavFragment.Se
             getFragmentManager()
                     .executePendingTransactions();*/
 
+            fragmentTransaction.add(R.id.fragment_details, new DetailsFragment());
 
-            DetailsFragment receiver = new DetailsFragment();
+
+           /* DetailsFragment receiver = new DetailsFragment();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragment_details, receiver);
-            fragmentTransaction.commit();
+            fragmentTransaction.commit();*/
 
 
 

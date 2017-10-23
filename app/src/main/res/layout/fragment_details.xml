@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.temple.lab3.DetailsFragment"
-    android:id="@+id/dett">
+    android:id="@+id/dett"
+    >
 
     <TextView android:layout_width="match_parent"
         android:id="@+id/det"
