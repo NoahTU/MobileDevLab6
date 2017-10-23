@@ -21,7 +21,7 @@ public class PaletteActivity extends AppCompatActivity implements NavFragment.Se
 
     //Spinner spinnerColor;
 
-    DetailsFragment receiver;
+    //DetailsFragment receiver= new DetailsFragment();
 
     GridView gridview;
 
@@ -53,37 +53,23 @@ public class PaletteActivity extends AppCompatActivity implements NavFragment.Se
 
 
         //receiver = new DetailsFragment();
-        NavFragment sender = new NavFragment();
 
-
-
-        getFragmentManager()
-                .beginTransaction()
-                .add(R.id.fragment_nav, sender)
-                .commit();
 
         /*getFragmentManager()
                 .beginTransaction()
                 .add(R.id.fragment_details, receiver)
                 .commit();*/
 
-        //getWindow().getDecorView().setBackgroundColor(Color.RED);
-        /*ArrayAdapter<String> adapter;
-
-        String[] colors = {
-                "Colors",
-                "red",
-                "blue",
-                "green",
-                "black",
-                "white",
-                "yellow",
-        };*/
 
 
         //  Determine if only one or two panes are visible
         twoPanes = (findViewById(R.id.fragment_details) != null);
         System.out.println(twoPanes);
+        //System.out.println(twoPanes);
+
+        if (getResources().getConfiguration().orientation==1){
+            twoPanes=false;
+        }
 
         //  Load navigation fragment by default
         FragmentManager fragmentManager = getFragmentManager();
@@ -91,21 +77,60 @@ public class PaletteActivity extends AppCompatActivity implements NavFragment.Se
         fragmentTransaction.add(R.id.fragment_nav, new NavFragment());
         fragmentTransaction.commit();
 
+
+        NavFragment sender = new NavFragment();
+
+        //DetailsFragment receiver= new DetailsFragment();
+
+
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragment_nav, sender)
+                .commit();
         /*
          *  Check if details pain is visible in current layout (e.g. large or landscape)
          *  and load fragment if true.
          */
         if (twoPanes){
-            receiver = new DetailsFragment();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.fragment_details, receiver);
+
+           /* fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.fragment_details, new DetailsFragment());
+            System.out.println("MAKES IT HERE 0");
            // fragmentTransaction.add(R.id.fragment_nav, new NavFragment());
             fragmentTransaction.commit();
-
             getFragmentManager()
+                    .executePendingTransactions();*/
+
+
+
+
+            /*DetailsFragment receiver = new DetailsFragment();
+            getFragmentManager()
+                    .beginTransaction()
+                    // .add(R.id.fragment_details, receiver)
+                    .add(R.id.fragment_details, receiver)
+                    .addToBackStack(null)
+                    .commit();
+            getFragmentManager()
+                    .executePendingTransactions();*/
+
+
+            DetailsFragment receiver = new DetailsFragment();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_details, receiver);
+            fragmentTransaction.commit();
+
+
+
+            System.out.println("MAKES IT HERE 1");
+            //DetailsFragment receiver = new DetailsFragment();
+            /*getFragmentManager()
                     .beginTransaction()
                     .add(R.id.fragment_details, receiver)
                     .commit();
+            getFragmentManager()
+                    .executePendingTransactions();*/
+            System.out.println("MAKES IT HERE 2");
         }
 
         /*Resources res = this.getResources();
@@ -151,9 +176,11 @@ public class PaletteActivity extends AppCompatActivity implements NavFragment.Se
     public void acceptMessage(String message) {
         System.out.println("BOI "+message);
 
+        DetailsFragment receiver= new DetailsFragment();
 
         if (!twoPanes) {
-            receiver = new DetailsFragment();
+            //DetailsFragment receiver= new DetailsFragment();
+            //receiver = new DetailsFragment();
 
             //receiver.setMessage(message);
             getFragmentManager()
@@ -167,10 +194,144 @@ public class PaletteActivity extends AppCompatActivity implements NavFragment.Se
 
             //receiver.setMessage(message);
             System.out.println(message);
-            findViewById(R.id.dett).setBackgroundColor(Color.BLACK);
+
+
+           // findViewById(R.id.dett).setBackgroundColor(Color.BLACK);
+
+            if (message.equals("red")||message.equals("rojo")) {
+
+                findViewById(R.id.det).setBackgroundColor(Color.RED);
+
+                //t.setText(message);
+//            Toast.makeText(getContext(), picked, Toast.LENGTH_SHORT).show();
+
+                // setContentView(R.layout.canvas);
+                //getWindow().getDecorView().setBackgroundColor(Color.RED);
+
+
+
+            }
+
+            if (message.equals("blue")||message.equals("azul")) {
+
+                //view.setBackgroundColor(Color.BLUE);
+                findViewById(R.id.det).setBackgroundColor(Color.BLUE);
+            }
+            if (message.equals("green")||message.equals("verde")) {
+
+                //view.setBackgroundColor(Color.GREEN);
+                findViewById(R.id.det).setBackgroundColor(Color.GREEN);
+            }
+            if (message.equals("yellow")||message.equals("amarillo")) {
+
+                //view.setBackgroundColor(Color.YELLOW);
+                findViewById(R.id.det).setBackgroundColor(Color.YELLOW);
+            }
+            if (message.equals("gray")||message.equals("gris")) {
+
+                // view.setBackgroundColor(Color.GRAY);
+                findViewById(R.id.det).setBackgroundColor(Color.GRAY);
+
+            }
+            if (message.equals("black")||message.equals("negro")) {
+
+                // view.setBackgroundColor(Color.GRAY);
+                findViewById(R.id.det).setBackgroundColor(Color.BLACK);;
+
+            }
+            if (message.equals("light gray")||message.equals("gris claro")) {
+
+                // view.setBackgroundColor(Color.GRAY);
+                findViewById(R.id.det).setBackgroundColor(Color.LTGRAY);
+
+            }
+            if (message.equals("white")||message.equals("blanco")) {
+
+                // view.setBackgroundColor(Color.GRAY);
+                findViewById(R.id.det).setBackgroundColor(Color.WHITE);
+
+            }
+            if (message.equals("magenta")) {
+
+                // view.setBackgroundColor(Color.GRAY);
+                findViewById(R.id.det).setBackgroundColor(Color.MAGENTA);
+
+            }
+            if (message.equals("cyan")||message.equals("cian")) {
+
+                // view.setBackgroundColor(Color.GRAY);
+                findViewById(R.id.det).setBackgroundColor(Color.CYAN);
+
+            }
+
         }
         else{
-            receiver.setMessage(message);
+            //receiver.setMessage(message);
+            if (message.equals("red")||message.equals("rojo")) {
+
+                findViewById(R.id.det).setBackgroundColor(Color.RED);
+
+                //t.setText(message);
+//            Toast.makeText(getContext(), picked, Toast.LENGTH_SHORT).show();
+
+                // setContentView(R.layout.canvas);
+                //getWindow().getDecorView().setBackgroundColor(Color.RED);
+
+
+
+            }
+
+            if (message.equals("blue")||message.equals("azul")) {
+
+                //view.setBackgroundColor(Color.BLUE);
+                findViewById(R.id.det).setBackgroundColor(Color.BLUE);
+            }
+            if (message.equals("green")||message.equals("verde")) {
+
+                //view.setBackgroundColor(Color.GREEN);
+                findViewById(R.id.det).setBackgroundColor(Color.GREEN);
+            }
+            if (message.equals("yellow")||message.equals("amarillo")) {
+
+                //view.setBackgroundColor(Color.YELLOW);
+                findViewById(R.id.det).setBackgroundColor(Color.YELLOW);
+            }
+            if (message.equals("gray")||message.equals("gris")) {
+
+                // view.setBackgroundColor(Color.GRAY);
+                findViewById(R.id.det).setBackgroundColor(Color.GRAY);
+
+            }
+            if (message.equals("black")||message.equals("negro")) {
+
+                // view.setBackgroundColor(Color.GRAY);
+                findViewById(R.id.det).setBackgroundColor(Color.BLACK);;
+
+            }
+            if (message.equals("light gray")||message.equals("gris claro")) {
+
+                // view.setBackgroundColor(Color.GRAY);
+                findViewById(R.id.det).setBackgroundColor(Color.LTGRAY);
+
+            }
+            if (message.equals("white")||message.equals("blanco")) {
+
+                // view.setBackgroundColor(Color.GRAY);
+                findViewById(R.id.det).setBackgroundColor(Color.WHITE);
+
+            }
+            if (message.equals("magenta")) {
+
+                // view.setBackgroundColor(Color.GRAY);
+                findViewById(R.id.det).setBackgroundColor(Color.MAGENTA);
+
+            }
+            if (message.equals("cyan")||message.equals("cian")) {
+
+                // view.setBackgroundColor(Color.GRAY);
+                findViewById(R.id.det).setBackgroundColor(Color.CYAN);
+
+            }
         }
 
 

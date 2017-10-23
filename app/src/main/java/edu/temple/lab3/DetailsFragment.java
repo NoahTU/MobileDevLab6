@@ -19,6 +19,8 @@ import android.widget.Toast;
 public class DetailsFragment extends Fragment {
 
     TextView textView;
+
+    View RootView;
     //String p="";
 
     public static DetailsFragment newInstance() {
@@ -30,16 +32,16 @@ public class DetailsFragment extends Fragment {
     }
 
 
-    @Override
+    /*@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
+    }*/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View RootView = inflater.inflate(R.layout.fragment_details, container, false);
+        RootView = inflater.inflate(R.layout.fragment_details, container, false);
 
         textView=  (TextView)RootView.findViewById(R.id.det);
 
